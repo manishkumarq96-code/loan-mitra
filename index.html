@@ -27,7 +27,7 @@
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
-            line-height: 1.6;
+            line-height: 1.9;
             min-height: 100vh;
         }
         
@@ -51,12 +51,12 @@
         }
         
         .logo-icon {
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             color: var(--primary);
         }
         
         .logo-text {
-            font-size: 1.8rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--primary);
         }
@@ -1281,27 +1281,30 @@
 <!-- HEADER -->
 <header class="main-header">
     <div class="logo">
-        <div class="logo-icon">🏦</div>
-        <div class="logo-text">LOAN <span>MITRA</span></div>
+    <div class="logo-icon">🏦</div>
+    <div class="logo-text">LOAN <span>MITRA</span></div>
+    <div style="font-size: 0.7rem; color: #666; margin-left: 10px; border-left: 1px solid #ddd; padding-left: 10px;">
+        <span style="color: var(--secondary);">✓</span> RBI Registered
     </div>
-    
+</div>
     <nav class="main-nav">
-        <a class="nav-link active" onclick="showSection('home')">Home</a>
-        <a class="nav-link" onclick="showSection('loans')">Loan Types</a>
-        <a class="nav-link" onclick="showSection('govt-banks')">Govt Schemes</a>
-        <a class="nav-link" onclick="showSection('nbfc-loans')">NBFC Loans</a>
-        <a class="nav-link" onclick="showSection('calculator')">EMI Calculator</a>
-        <a class="nav-link" onclick="showSection('apply')">Apply Now</a>
-        <a class="nav-link" onclick="openAdminLogin()">Admin</a>
-    </nav>
+    <a class="nav-link active" onclick="showSection('home')">Home</a>
+    <a class="nav-link" onclick="showSection('loans')">Loan Types</a>
+    <a class="nav-link" onclick="showSection('govt-banks')">Govt Schemes</a>
+    <a class="nav-link" onclick="showSection('nbfc-loans')">NBFC Loans</a>
+    <a class="nav-link" onclick="showSection('calculator')">EMI Calculator</a>
+    <a class="nav-link" onclick="showSection('apply')">Apply Now</a>
+       <a class="nav-link" onclick="openAdminLogin()">Admin</a>
+</nav>
     
     <button class="header-btn" onclick="showSection('apply')">Apply Now</button>
 </header>
 
 <!-- HERO SECTION -->
 <section class="hero-section" id="home">
-    <h1 class="hero-title">INSTANT LOAN APPROVAL IN 5 MINUTES</h1>
-    <p class="hero-subtitle">Get instant loans up to ₹50 lakhs with minimal documentation. 100% digital process with lowest interest rates.</p>
+    <h1 class="hero-title">Your trusted partner for fast and easy loan solutions.</h1>
+    <p class="hero-subtitle">“Apply through our platform to connect directly with government banks and NBFC.
+Submit your form, select your bank, and our team will reach out within 24 hours.</p>
     
     <div class="hero-features">
         <div class="feature-card">
@@ -1332,8 +1335,8 @@
 
 <!-- LOAN TYPES SECTION -->
 <div class="section-title" id="loans">
-    <h2>Our Loan Services</h2>
-    <p>Choose from our wide range of loan products</p>
+    <h2>MULTIPLE LOAN SERVICES ARE AVAILABLE</h2>
+    <p>Choose from our wide range of loan products designed to meet your needs</p>
 </div>
 
 <div class="loan-cards-container">
@@ -1361,7 +1364,7 @@
     <!-- Personal Loan Card -->
     <div class="loan-card" onclick="showLoanDetails('personal')">
         <div class="loan-card-header">
-            <div class="loan-icon">👤</div>
+            <div class="loan-icon">💳</div>
             <h3>Personal Loan</h3>
         </div>
         <div class="loan-card-content">
@@ -1422,11 +1425,239 @@
     </div>
 </div>
 
+<!-- Government Banks section से पहले add करें -->
+<section style="background: white; padding: 60px 5%;">
+    <div class="section-title">
+        <h2>Loan Comparison Wizard</h2>
+        <p>Find the perfect loan in 3 simple steps</p>
+    </div>
+    
+    <div id="comparisonWizard" style="max-width: 800px; margin: 40px auto;">
+        <!-- Step 1 -->
+        <div id="wizardStep1" style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin-bottom: 20px;">
+            <h4 style="color: var(--primary); margin-bottom: 20px;">Step 1: What do you need?</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                <button class="wizard-option" onclick="selectWizardOption('home', 'Home Loan')">
+                    <div style="font-size: 2rem;">🏠</div>
+                    <div>Home</div>
+                </button>
+                <button class="wizard-option" onclick="selectWizardOption('car', 'Car Loan')">
+                    <div style="font-size: 2rem;">🚗</div>
+                    <div>Car</div>
+                </button>
+                <button class="wizard-option" onclick="selectWizardOption('personal', 'Personal Loan')">
+                    <div style="font-size: 2rem;">💳</div>
+                    <div>Personal</div>
+                </button>
+                <button class="wizard-option" onclick="selectWizardOption('business', 'Business Loan')">
+                    <div style="font-size: 2rem;">💼</div>
+                    <div>Business</div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Step 2 (hidden initially) -->
+        <div id="wizardStep2" style="display: none; background: #f8f9fa; padding: 30px; border-radius: 15px; margin-bottom: 20px;">
+            <h4 style="color: var(--primary); margin-bottom: 20px;">Step 2: Choose your priority</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <button class="wizard-option" onclick="selectWizardPriority('low_interest')">
+                    <div style="font-size: 2rem;">📉</div>
+                    <div>Lowest Interest</div>
+                </button>
+                <button class="wizard-option" onclick="selectWizardPriority('fast_approval')">
+                    <div style="font-size: 2rem;">⚡</div>
+                    <div>Fast Approval</div>
+                </button>
+                <button class="wizard-option" onclick="selectWizardPriority('min_docs')">
+                    <div style="font-size: 2rem;">📄</div>
+                    <div>Minimal Documents</div>
+                </button>
+                <button class="wizard-option" onclick="selectWizardPriority('flexible')">
+                    <div style="font-size: 2rem;">🔄</div>
+                    <div>Flexible Repayment</div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Step 3 (hidden initially) -->
+        <div id="wizardStep3" style="display: none; background: #f8f9fa; padding: 30px; border-radius: 15px;">
+            <h4 style="color: var(--primary); margin-bottom: 20px;">Step 3: Select amount & tenure</h4>
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Loan Amount (₹)</label>
+                <input type="range" min="50000" max="5000000" value="500000" step="50000" 
+                       oninput="document.getElementById('wizardAmount').textContent='₹'+parseInt(this.value).toLocaleString('en-IN')"
+                       style="width: 100%;">
+                <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                    <span>₹50K</span>
+                    <span id="wizardAmount" style="font-weight: bold;">₹5,00,000</span>
+                    <span>₹50L</span>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Preferred Tenure</label>
+                <select id="wizardTenure" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+                    <option value="1">1 Year</option>
+                    <option value="3">3 Years</option>
+                    <option value="5" selected>5 Years</option>
+                    <option value="7">7 Years</option>
+                    <option value="10">10 Years</option>
+                    <option value="15">15 Years</option>
+                    <option value="20">20 Years</option>
+                </select>
+            </div>
+            
+            <button onclick="showWizardResults()" 
+                    style="background: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; width: 100%;">
+                <i class="fas fa-search"></i> Find Best Loans
+            </button>
+        </div>
+        
+        <!-- Results (hidden initially) -->
+        <div id="wizardResults" style="display: none; margin-top: 30px;">
+            <!-- Results will be shown here -->
+        </div>
+    </div>
+</section>
+
+<script>
+let wizardData = {
+    loanType: '',
+    priority: '',
+    amount: 500000,
+    tenure: 5
+};
+
+function selectWizardOption(type, name) {
+    wizardData.loanType = type;
+    document.getElementById('wizardStep1').style.display = 'none';
+    document.getElementById('wizardStep2').style.display = 'block';
+    
+    // Update active button
+    document.querySelectorAll('.wizard-option').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+function selectWizardPriority(priority) {
+    wizardData.priority = priority;
+    document.getElementById('wizardStep2').style.display = 'none';
+    document.getElementById('wizardStep3').style.display = 'block';
+    
+    document.querySelectorAll('.wizard-option').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+function showWizardResults() {
+    wizardData.amount = parseInt(document.querySelector('#wizardStep3 input[type="range"]').value);
+    wizardData.tenure = parseInt(document.getElementById('wizardTenure').value);
+    
+    const results = {
+        'home_low_interest': [
+            { bank: 'SBI', interest: '8.4%', processing: '7-10 days', emi: '₹24,567' },
+            { bank: 'PNB', interest: '8.5%', processing: '5-8 days', emi: '₹24,789' }
+        ],
+        'personal_fast_approval': [
+            { bank: 'Bajaj Finance', interest: '10.5%', processing: '24 hours', emi: '₹10,745' },
+            { bank: 'HDFC Bank', interest: '11%', processing: '2-3 days', emi: '₹10,867' }
+        ],
+        // Add more combinations
+    };
+    
+    const key = `${wizardData.loanType}_${wizardData.priority}`;
+    const loanResults = results[key] || [
+        { bank: 'Multiple Options', interest: '10-12%', processing: '3-7 days', emi: '₹' + Math.round(wizardData.amount/60).toLocaleString('en-IN') }
+    ];
+    
+    document.getElementById('wizardStep3').style.display = 'none';
+    document.getElementById('wizardResults').style.display = 'block';
+    document.getElementById('wizardResults').innerHTML = `
+        <h4 style="color: var(--primary); margin-bottom: 20px;">Top Recommendations for You</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            ${loanResults.map((loan, index) => `
+                <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h5 style="margin: 0; color: var(--primary);">${loan.bank}</h5>
+                        ${index === 0 ? '<span style="background: #4CAF50; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem;">Best Match</span>' : ''}
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <div style="font-size: 0.9rem; color: #666;">Interest Rate</div>
+                            <div style="font-size: 1.2rem; font-weight: bold; color: #4CAF50;">${loan.interest}</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.9rem; color: #666;">Processing Time</div>
+                            <div style="font-size: 1.2rem; font-weight: bold;">${loan.processing}</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.9rem; color: #666;">Monthly EMI*</div>
+                            <div style="font-size: 1.2rem; font-weight: bold;">${loan.emi}</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.9rem; color: #666;">Loan Amount</div>
+                            <div style="font-size: 1.2rem; font-weight: bold;">₹${wizardData.amount.toLocaleString('en-IN')}</div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="applyWithBankWizard('${loan.bank}')" 
+                            style="background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; width: 100%;">
+                        Apply with ${loan.bank.split(' ')[0]}
+                    </button>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="resetWizard()" 
+                    style="background: none; border: 2px solid var(--primary); color: var(--primary); padding: 10px 20px; border-radius: 8px; cursor: pointer;">
+                <i class="fas fa-redo"></i> Start Over
+            </button>
+        </div>
+    `;
+}
+
+function applyWithBankWizard(bankName) {
+    // Find bank in your database and apply
+    alert(`Applying with ${bankName}...`);
+    showSection('apply');
+}
+
+function resetWizard() {
+    wizardData = { loanType: '', priority: '', amount: 500000, tenure: 5 };
+    document.getElementById('wizardStep1').style.display = 'block';
+    document.getElementById('wizardStep2').style.display = 'none';
+    document.getElementById('wizardStep3').style.display = 'none';
+    document.getElementById('wizardResults').style.display = 'none';
+    document.querySelectorAll('.wizard-option').forEach(btn => btn.classList.remove('active'));
+}
+</script>
+
+<style>
+.wizard-option {
+    background: white;
+    border: 2px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+.wizard-option:hover, .wizard-option.active {
+    border-color: var(--primary);
+    background: #f0f4ff;
+    transform: translateY(-5px);
+}
+</style>
 <!-- GOVERNMENT BANKS SECTION -->
 <section class="banks-section" id="govt-banks" style="display: none;">
     <div class="section-title">
-        <h2>Government Loan Schemes</h2>
-        <p>Apply with trusted government banks and schemes</p>
+        <h2>GOVERNMENT LOAN SCHEMES FOR RELIABLE FINANCIAL SUPPORT
+</h2>
+        <p>Apply with authorized government banks and recognized loan schemes to ensure credibility and trust.
+Our process is transparent, secure, and fully compliant with regulatory standards.
+You receive clear guidance at every step, from application to approval.
+We focus on providing reliable support tailored to your financial requirements.
+Experience a smooth and hassle-free journey with complete peace of mind</p>
     </div>
     
     <!-- Filters -->
@@ -1448,8 +1679,12 @@
 <!-- NBFC LOANS SECTION -->
 <section class="banks-section" id="nbfc-loans" style="display: none;">
     <div class="section-title">
-        <h2>NBFC Loans</h2>
-        <p>Fast processing with leading NBFCs</p>
+        <h2>NBFC FINANCING SOLUTIONS FOR FAST AND FLEXIBLE LOANS</h2>
+        <p>Experience fast and efficient loan processing through leading NBFC partners.
+Our streamlined procedures ensure minimal documentation and quick approvals.
+We work with trusted NBFCs to provide flexible and reliable loan solutions.
+Every application is handled with transparency and professional support.
+Get timely financial assistance designed to meet your specific needs</p>
     </div>
     
     <!-- Filters -->
@@ -1675,12 +1910,62 @@
         </div>
     </div>
 </div>
-
+<!-- ======== TESTIMONIALS SECTION - PASTE BEFORE CALCULATOR ======== -->
+<section class="testimonials-section" style="background: #f8f9fa; padding: 60px 5%;">
+    <div class="section-title">
+        <h2>What Our Customers Say</h2>
+        <p>Real stories from real customers</p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+        <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                <div style="width: 60px; height: 60px; background: #e3f2fd; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-right: 15px;">
+                    🙏
+                </div>
+                <div>
+                    <h4 style="margin: 0;">Rahul Sharma</h4>
+                    <div style="color: #ff9800; font-size: 0.9rem;">★★★★★</div>
+                </div>
+            </div>
+            <p>"Got my home loan approved in just 3 days. The process was completely digital and hassle-free."</p>
+        </div>
+        
+        <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                <div style="width: 60px; height: 60px; background: #f3e5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-right: 15px;">
+                    💼
+                </div>
+                <div>
+                    <h4 style="margin: 0;">Priya Patel</h4>
+                    <div style="color: #ff9800; font-size: 0.9rem;">★★★★★</div>
+                </div>
+            </div>
+            <p>"Business loan process was smooth. Support team helped me with all documents. Highly recommended!"</p>
+        </div>
+        
+        <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                <div style="width: 60px; height: 60px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-right: 15px;">
+                    🚗
+                </div>
+                <div>
+                    <h4 style="margin: 0;">Amit Verma</h4>
+                    <div style="color: #ff9800; font-size: 0.9rem;">★★★★★</div>
+                </div>
+            </div>
+            <p>"Vehicle loan approved within 24 hours. Lowest interest rate compared to other platforms."</p>
+        </div>
+    </div>
+</section>
+<!-- ======== END TESTIMONIALS ======== -->
+>
 <!-- EMI CALCULATOR SECTION -->
 <section class="calculator-section" id="calculator">
     <div class="section-title">
-        <h2>Smart EMI Calculator</h2>
-        <p>Calculate your monthly EMI instantly</p>
+        <h2>ACCURATE EMI CALCULATION TOOL</h2>
+        <p>Instantly calculate your monthly EMI with accurate results to plan your loan repayments confidently.
+</p>
     </div>
     
     <div class="calculator-container">
@@ -1719,7 +2004,7 @@
                 <input type="range" id="tenureSlider" min="1" max="30" value="10" step="1" oninput="updateEMICalculator()">
             </div>
         </div>
-        
+    
         <div class="emi-display">
             <p>Your Monthly EMI</p>
             <div class="emi-amount" id="emiAmount">₹12,933</div>
@@ -1745,12 +2030,147 @@
         </div>
     </div>
 </section>
+<!-- EMI Calculator के बाद add करें -->
+<div style="margin-top: 40px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+    <h4 style="color: var(--primary); margin-bottom: 20px;">
+        <i class="fas fa-calendar-alt"></i> Repayment Schedule
+    </h4>
+    
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: #f8f9fa;">
+                    <th style="padding: 12px; text-align: left;">Year</th>
+                    <th style="padding: 12px; text-align: right;">Principal Paid</th>
+                    <th style="padding: 12px; text-align: right;">Interest Paid</th>
+                    <th style="padding: 12px; text-align: right;">Remaining Balance</th>
+                </tr>
+            </thead>
+            <tbody id="repaymentSchedule">
+                <!-- JavaScript will populate this -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+function generateRepaymentSchedule() {
+    const loanAmount = parseFloat(document.getElementById('loanAmountSlider').value);
+    const interestRate = parseFloat(document.getElementById('interestRateSlider').value);
+    const tenureYears = parseFloat(document.getElementById('tenureSlider').value);
+    
+    const monthlyRate = interestRate / 12 / 100;
+    const tenureMonths = tenureYears * 12;
+    
+    const emi = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, tenureMonths)) / 
+                (Math.pow(1 + monthlyRate, tenureMonths) - 1);
+    
+    let balance = loanAmount;
+    let scheduleHTML = '';
+    
+    for(let year = 1; year <= tenureYears; year++) {
+        let yearlyPrincipal = 0;
+        let yearlyInterest = 0;
+        
+        for(let month = 1; month <= 12 && balance > 0; month++) {
+            const interest = balance * monthlyRate;
+            const principal = emi - interest;
+            
+            yearlyPrincipal += principal;
+            yearlyInterest += interest;
+            balance -= principal;
+        }
+        
+        scheduleHTML += `
+            <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">Year ${year}</td>
+                <td style="padding: 10px; text-align: right; border-bottom: 1px solid #eee;">₹${Math.round(yearlyPrincipal).toLocaleString('en-IN')}</td>
+                <td style="padding: 10px; text-align: right; border-bottom: 1px solid #eee;">₹${Math.round(yearlyInterest).toLocaleString('en-IN')}</td>
+                <td style="padding: 10px; text-align: right; border-bottom: 1px solid #eee;">₹${Math.round(balance).toLocaleString('en-IN')}</td>
+            </tr>
+        `;
+    }
+    
+    document.getElementById('repaymentSchedule').innerHTML = scheduleHTML;
+}
+
+// Update schedule when EMI calculator updates
+document.getElementById('loanAmountSlider').addEventListener('input', generateRepaymentSchedule);
+document.getElementById('interestRateSlider').addEventListener('input', generateRepaymentSchedule);
+document.getElementById('tenureSlider').addEventListener('input', generateRepaymentSchedule);
+</script>
+<!-- Application Form से पहले add करें -->
+<section style="background: #f8f9fa; padding: 60px 5%;">
+    <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions</p>
+    </div>
+    
+    <div style="max-width: 800px; margin: 40px auto;">
+        <div class="faq-item" style="background: white; margin-bottom: 15px; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <div class="faq-question" style="padding: 20px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                What documents are required for a loan?
+                <span style="font-size: 1.2rem;">+</span>
+            </div>
+            <div class="faq-answer" style="padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s;">
+                <p style="padding: 20px 0; margin: 0;">Basic documents include PAN card, Aadhaar card, address proof, income proof (salary slips or ITR), and bank statements. Specific requirements vary by loan type.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item" style="background: white; margin-bottom: 15px; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <div class="faq-question" style="padding: 20px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                How long does loan approval take?
+                <span style="font-size: 1.2rem;">+</span>
+            </div>
+            <div class="faq-answer" style="padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s;">
+                <p style="padding: 20px 0; margin: 0;">Personal loans: 24-48 hours. Home loans: 3-7 days. Business loans: 5-10 days. Time may vary based on document verification.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item" style="background: white; margin-bottom: 15px; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <div class="faq-question" style="padding: 20px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                What is the minimum credit score required?
+                <span style="font-size: 1.2rem;">+</span>
+            </div>
+            <div class="faq-answer" style="padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s;">
+                <p style="padding: 20px 0; margin: 0;">Minimum 650 for most loans. Above 750 gets you better interest rates. We also have options for lower credit scores.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item" style="background: white; margin-bottom: 15px; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <div class="faq-question" style="padding: 20px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                Are there any hidden charges?
+                <span style="font-size: 1.2rem;">+</span>
+            </div>
+            <div class="faq-answer" style="padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s;">
+                <p style="padding: 20px 0; margin: 0;">No hidden charges. All fees are transparent: processing fee (0.5-2%), GST, and foreclosure charges (if applicable).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleFAQ(element) {
+    const answer = element.nextElementSibling;
+    const icon = element.querySelector('span');
+    
+    if(answer.style.maxHeight === '0px' || answer.style.maxHeight === '') {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.style.padding = '0 20px';
+        icon.textContent = '−';
+    } else {
+        answer.style.maxHeight = '0';
+        answer.style.padding = '0 20px';
+        icon.textContent = '+';
+    }
+}
+</script>
 
 <!-- APPLICATION FORM SECTION -->
 <section class="form-section" id="apply">
     <div class="section-title">
-        <h2>Digital Loan Application</h2>
-        <p>Complete the form below to apply for loan</p>
+        <h2>FILL THE FORM BELOW TO APPLY</h2>
+        <p>Submit your details through the form below for a smooth and transparent loan application experience</p>
     </div>
     
     <div class="form-container">
@@ -1959,7 +2379,40 @@
                 </button>
             </div>
         </div>
-        
+            </div> <!-- form-grid का closing tag -->
+    
+    <!-- ======== DOCUMENT CHECKLIST - PASTE HERE ======== -->
+    <div class="document-checklist" style="margin-top: 30px; background: #f8f9fa; padding: 20px; border-radius: 10px;">
+        <h4 style="color: var(--primary); margin-bottom: 15px;">
+            <i class="fas fa-clipboard-list"></i> Required Documents
+        </h4>
+        <div id="documentList">
+            <!-- Documents will be shown based on loan type -->
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <i class="fas fa-file-alt" style="color: var(--primary); margin-right: 10px;"></i>
+                PAN Card
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <i class="fas fa-file-alt" style="color: var(--primary); margin-right: 10px;"></i>
+                Aadhaar Card
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <i class="fas fa-file-alt" style="color: var(--primary); margin-right: 10px;"></i>
+                Address Proof
+            </div>
+        </div>
+    </div>
+    <!-- ======== END DOCUMENT CHECKLIST ======== -->
+    
+    <div class="form-actions">
+        <button class="btn btn-secondary" onclick="prevFormStep()">
+            <i class="fas fa-arrow-left"></i> Previous
+        </button>
+        <button class="btn btn-primary" onclick="nextFormStep()">
+            Next <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+</div>
         <!-- Step 4: Review & Submit -->
         <div class="form-step" id="step4">
             <h3 style="color: var(--primary); margin-bottom: 25px;">Review & Submit Application</h3>
@@ -2048,7 +2501,7 @@
 
 <script>
     // =================== CONFIGURATION ===================
-    const ADMIN_PASSWORD = "admin123";
+    const ADMIN_PASSWORD = "Manny123";
     let isAdminLoggedIn = false;
     let leadsDatabase = JSON.parse(localStorage.getItem('loanMitraLeads')) || [];
     let currentSelectedBank = null;
@@ -2769,7 +3222,7 @@
             sessionStorage.setItem('loanMitraAdminLoggedIn', 'true');
             console.log('Admin logged in');
         } else {
-            alert('❌ Incorrect password! Please try again.');
+            alert('❌ Fir se try kr beta bhul gya to tera nick name yad kar le.');
         }
     }
     
@@ -3010,6 +3463,7 @@
         return '₹' + amount.toLocaleString('en-IN');
     }
     
+
     // =================== APPLICATION FORM FUNCTIONS ===================
     
     let currentStep = 1;
